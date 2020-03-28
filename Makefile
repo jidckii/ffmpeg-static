@@ -6,6 +6,8 @@ ifeq ($(FFVERSION),)
 FFVERSION = snapshot
 endif
 
+.DEFAULT_GOAL := default
+
 .PHONY: build
 build:
 	docker build \
@@ -20,3 +22,7 @@ copy:
 	docker cp ffmpeg-static-copy:/tmp/ffmpeg-static/bin/ffmpeg ./
 	docker cp ffmpeg-static-copy:/tmp/ffmpeg-static/bin/ffprobe ./
 	docker rm -f ffmpeg-static-copy
+
+.PHONY: default
+default: build
+default: copy

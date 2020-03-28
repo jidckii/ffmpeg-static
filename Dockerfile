@@ -72,7 +72,5 @@ RUN set -xe &&  \
         --extra-version=jidckii \
         --pkg-config-flags="--static" \
         --prefix="${PREFIX}" \
-        && make "${MAKEFLAGS}"
-RUN set -xe &&  \
-        DIR=/tmp/ffmpeg && mkdir -p "${DIR}" && cd "${DIR}" && \
-        make install
+        && make "${MAKEFLAGS}" \
+        && make install
