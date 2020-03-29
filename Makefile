@@ -19,8 +19,8 @@ build:
 .PHONY: copy
 copy:
 	docker create --name ffmpeg-static-copy jidckii/ffmpeg-static:$(FFVERSION)
-	docker cp ffmpeg-static-copy:/tmp/ffmpeg-static/bin/ffmpeg ./
-	docker cp ffmpeg-static-copy:/tmp/ffmpeg-static/bin/ffprobe ./
+	docker cp ffmpeg-static-copy:/usr/local/bin/ffmpeg ./
+	docker cp ffmpeg-static-copy:/usr/local/bin/ffprobe ./
 	docker rm -f ffmpeg-static-copy
 
 .PHONY: default

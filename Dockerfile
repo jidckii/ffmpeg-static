@@ -74,3 +74,14 @@ RUN set -xe &&  \
         --prefix="${PREFIX}" \
         && make "${MAKEFLAGS}" \
         && make install
+
+FROM ubuntu:buinic as release
+WORKDIR /tmp/ffmpeg-static
+COPY --from=libs /tmp/ffmpeg-static/bin/ffmpeg /usr/local/bin/ffmpeg
+COPY --from=libs /tmp/ffmpeg-static/bin/ffprobe /usr/local/bin/ffprobe
+
+LABEL maintainer="YuccaStream Developers <info@yuccastream.com> , <https://yuccastream.com>"
+LABEL io.yucca.ffmpeg=true
+
+ENTRYPOINT ["ffmpeg"]
+CMD ["-version"]
