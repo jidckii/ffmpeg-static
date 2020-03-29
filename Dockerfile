@@ -75,7 +75,7 @@ RUN set -xe &&  \
         && make "${MAKEFLAGS}" \
         && make install
 
-FROM ubuntu:buinic as release
+FROM ubuntu:bionic as release
 WORKDIR /tmp/ffmpeg-static
 COPY --from=libs /tmp/ffmpeg-static/bin/ffmpeg /usr/local/bin/ffmpeg
 COPY --from=libs /tmp/ffmpeg-static/bin/ffprobe /usr/local/bin/ffprobe
